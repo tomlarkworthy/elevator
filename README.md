@@ -29,7 +29,7 @@ Physical Units
 The elevator states, commands and step size are described in type safe physical units (distance, velocity, time), which
 makes simulations much more easily interpreted.
 
-I used squants, though I would have preferred not to use doubles.
+I used [squants](https://www.squants.com/), though I would have preferred not to use doubles.
 
 See [larkworthy.model.ElevatorState](src/main/scala/larkworthy/model/ElevatorState.scala)
 and [larkworthy.model.ElevatorCommand](src/main/scala/larkworthy/model/ElevatorCommand.scala)
@@ -44,9 +44,12 @@ timeframe I wanted to ensure correctness over process. In my experience, correct
 randomized property testing. I used ScalaCheck. It caught several non-transitive floating point mistakes and incorrect
 step size induced bugs.
 
-The core idea of the correctness property is that we have an issue when the system starts repeating itself when trying to serve requests.
-So we generate a random state with random requests, then check that eventually all the the requests are server. We can abort property 
-checking with a failure when we see the same state twice.
+The core trick of the correctness property is that we have an issue when the system starts repeating itself when trying
+to serve requests, thus making no progress. So we generate a random state with random requests, then check that
+eventually all the the requests are served. We can abort early with a failure if we see the same state twice.
+
+Aborting on failure is useful as ScalaCheck can tell you which scenario failed and you can determine how to fix it (in 
+contrast to the test spinning in an infinite loop).
 
 See [larkworthy.model.ElevatorSystemSpec](src/test/scala/larkworthy/model/ElevatorSystemSpec.scala)
 
