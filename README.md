@@ -63,7 +63,7 @@ A good solution for elevators is the [LOOK algorithm](https://en.wikipedia.org/w
 elevator moving in the same direction until it runs out of requests that could be fulfilled ahead of it.
 It then reverses direction. This has shown to have good tail latency performance while avoiding starvation.
 
-See [larkworthy.solver.LookSolver](src/test/scala/larkworthy/solver/LookSolver.scala)
+See [larkworthy.solver.LookSolver](src/main/scala/larkworthy/solver/LookSolver.scala)
 
 Running it
 ----------
