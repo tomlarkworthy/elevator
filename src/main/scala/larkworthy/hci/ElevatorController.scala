@@ -44,7 +44,6 @@ class ElevatorController(val config: ElevatorConfig,
   /**
     * Steps the simulation a time unit.
     * @see ElevatorConfig#stepSize()
-    * @throws CompositeExceptionError
     */
   def step(): Unit = state = state.step().get
 }

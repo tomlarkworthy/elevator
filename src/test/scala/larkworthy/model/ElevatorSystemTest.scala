@@ -33,7 +33,6 @@ class ElevatorSystemTest {
     var seenOpenCarOn0 = false
 
     while(system.externalRequests.nonEmpty) {
-      // println(system)
       system = system.step().get
 
       if (system.hasOpenCarOn(2)) seenOpenCarOn2 = true
@@ -57,7 +56,6 @@ class ElevatorSystemTest {
     var seenOpenCarOn = (0 to 5).map(floor => floor -> false).toMap
 
     while(system.internalRequests.nonEmpty) {
-      // println(system)
       system = system.step().get
 
       for (floor <- 0 to 5) {
