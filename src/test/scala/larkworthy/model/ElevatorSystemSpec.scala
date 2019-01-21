@@ -4,7 +4,7 @@ import org.scalacheck.{Prop, Properties}
 import org.scalacheck.Prop.forAll
 
 /**
-  * The main test for the work, we used randomized
+  * The main test for the work, we used randomized property testing
   */
 object ElevatorSystemSpec extends Properties("ElevatorSystem") {
 

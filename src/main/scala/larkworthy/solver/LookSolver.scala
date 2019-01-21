@@ -2,6 +2,9 @@ package larkworthy.solver
 
 import larkworthy.model._
 
+/**
+  * Implementation of https://en.wikipedia.org/wiki/LOOK_algorithm
+  */
 object LookSolver extends Function[ElevatorSystem, ElevatorCommand] {
   override def apply(system: ElevatorSystem): ElevatorCommand = {
     ElevatorCommand(system.elevator.cars.map {
